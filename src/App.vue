@@ -1,27 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <main class="w-full bg-pattern flex flex-col p-5">
+    <header>
+      <h1 class="text-white text-center font-bold text-2xl">IP Address Tracker</h1>
+    </header>
+    <form class="flex items-stretch">
+      <input type="text" class="rounded-tl-xl rounded-bl-xl flex-grow" />
+      <button type="submit" class="inline bg-black p-5 rounded-tr-xl rounded-br-xl">
+        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14">
+          <path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6" />
+        </svg>
+      </button>
+    </form>
+  </main>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld,
-  },
-});
-</script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
