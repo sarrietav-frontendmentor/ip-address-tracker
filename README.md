@@ -1,24 +1,7 @@
-# ip-address-tracker
+# Frontend Mentor - IP address tracker solution
 
-## Project setup
-```
-yarn install
-```
+This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Screenshot
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![Image](./desktop-preview.jpg)
