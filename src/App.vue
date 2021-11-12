@@ -1,13 +1,15 @@
 <template>
-  <div class="h-screen">
+  <div class="h-screen flex flex-col">
     <main class="w-full bg-pattern flex flex-col p-5 space-y-5">
       <header>
         <h1 class="text-white text-center font-bold text-2xl">IP Address Tracker</h1>
       </header>
       <IpInput />
-      <ResponseBox />
+      <ResponseBox class="z-20" />
     </main>
-    <div id="map" class="w-full h-full"></div>
+    <div class="w-full h-full relative -mt-48">
+      <div id="map" class="w-full h-full absolute z-0"></div>
+    </div>
   </div>
 </template>
 
