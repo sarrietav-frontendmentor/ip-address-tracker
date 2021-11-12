@@ -1,6 +1,10 @@
 <template>
   <form class="flex items-stretch">
-    <input type="text" class="rounded-tl-xl rounded-bl-xl flex-grow" />
+    <input
+      type="text"
+      value="192.212.174.101"
+      class="rounded-tl-xl rounded-bl-xl flex-grow pl-6 font-rubik text-lg text-gray-800"
+    />
     <button type="submit" class="inline bg-black p-5 rounded-tr-xl rounded-br-xl">
       <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14">
         <path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6" />
