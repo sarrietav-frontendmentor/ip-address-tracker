@@ -7,6 +7,9 @@ module.exports = {
       fontFamily: {
         rubik: ['Rubik', 'sans-serif'],
       },
+      backgroundImage: {
+        pattern: 'url("./assets/pattern-bg.png")',
+      },
     },
   },
   variants: {
