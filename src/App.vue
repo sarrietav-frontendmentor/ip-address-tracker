@@ -21,7 +21,7 @@ import ResponseBox from './components/ResponseBox.vue';
 const map = ref();
 
 onMounted(() => {
-  map.value = Leaflet.map('map').setView([10.39972, -75.51444], 12);
+  map.value = Leaflet.map('map', { zoomControl: false }).setView([10.39972, -75.51444], 15);
   Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
