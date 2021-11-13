@@ -6,7 +6,7 @@
           IP Address Tracker
         </h1>
       </header>
-      <IpInput v-model="ipAddress" />
+      <IpInput v-model="ipAddress" @submit="handleIpInputSubmit" />
       <ResponseBox
         class="z-20"
         :ip="responseInfo?.ip"
@@ -57,4 +57,17 @@ onMounted(async () => {
     latitude: lat,
   });
 });
+
+const handleIpInputSubmit = async () => {
+  const response = await callGeolocationApi(ipAddress.value);
+
+  const { lng, lat } = response;
+
+  responseInfo.value = response;
+
+  map.value = createMap({
+    longitude: lng,
+    latitude: lat,
+  });
+};
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <form class="flex items-stretch">
+  <form class="flex items-stretch" @submit.prevent="$emit('submit')">
     <input
       type="text"
       :value="modelValue"
@@ -30,7 +30,7 @@ defineProps({
   modelValue: String,
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'submit']);
 
 const onInput = (event: Event): void => {
   emit('update:modelValue', (event.target as HTMLInputElement).value);
