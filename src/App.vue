@@ -22,7 +22,6 @@ import { ref, onMounted } from 'vue';
 import IpInput from './components/IpInput.vue';
 import ResponseBox from './components/ResponseBox.vue';
 import { createMap } from './hooks/createMap';
-import axios from 'axios';
 import { callGeolocationApi } from './hooks/ipGeolocationApi';
 
 const map = ref<Leaflet.Map>();
@@ -45,8 +44,7 @@ onMounted(async () => {
 
   responseInfo.value = response;
 
-  createMap({
-    map,
+  map.value = createMap({
     longitude: lng,
     latitude: lat,
   });

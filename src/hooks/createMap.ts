@@ -20,22 +20,22 @@ const svgIcon = Leaflet.divIcon({
 });
 
 export const createMap = ({
-  map,
   latitude,
   longitude,
 }: {
-  map: Ref<Leaflet.Map | undefined>;
   longitude: number;
   latitude: number;
-}): void => {
-  map.value = Leaflet.map('map', {
+}): Leaflet.Map => {
+  const map = Leaflet.map('map', {
     zoomControl: false,
   }).setView([latitude, longitude], 15);
 
   Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(map.value);
+  }).addTo(map);
 
-  Leaflet.marker([latitude, longitude], { icon: svgIcon }).addTo(map.value);
+  Leaflet.marker([latitude, longitude], { icon: svgIcon }).addTo(map);
+
+  return map;
 };
