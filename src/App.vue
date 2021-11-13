@@ -22,9 +22,24 @@ import { ref, onMounted } from 'vue';
 import IpInput from './components/IpInput.vue';
 import ResponseBox from './components/ResponseBox.vue';
 import { createMap } from './hooks/createMap';
+import axios from 'axios';
 
 const map = ref<Leaflet.Map>();
 const ipAddress = ref<string>();
+const geoCoords = ref<{
+  latitude: number;
+  longitude: number;
+}>();
 
 onMounted(() => createMap(map));
+onMounted(async () => {
+  const response = await axios.get<{
+    ip: string;
+    latitude: number;
+    longitude: number;
+  }>('https://json.geoiplookup.io/');
+  const { ip, latitude, longitude } = response.data;
+  ipAddress.value = ip;
+  geoCoords.value = { latitude, longitude };
+});
 </script>
