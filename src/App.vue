@@ -7,7 +7,15 @@
         </h1>
       </header>
       <IpInput v-model="ipAddress" />
-      <ResponseBox class="z-20" />
+      <ResponseBox
+        class="z-20"
+        :ip="responseInfo?.ip"
+        :city="responseInfo?.city"
+        :region="responseInfo?.region"
+        :postal-code="responseInfo?.postalCode"
+        :timezone="responseInfo?.timezone"
+        :isp="responseInfo?.isp"
+      />
     </main>
     <div class="w-full h-full relative -mt-48">
       <div id="map" class="w-full h-full absolute z-0"></div>
