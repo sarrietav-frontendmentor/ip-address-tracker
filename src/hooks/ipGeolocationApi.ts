@@ -39,8 +39,8 @@ export const callGeolocationApi = async (
     'https://geo.ipify.org/api/v2/country,city',
     {
       params: ipAddress
-        ? { ipKey: process.env.VUE_APP_IPIFY_API_KEY, ipAddress }
-        : { ipKey: process.env.VUE_APP_IPIFY_API_KEY },
+        ? { apiKey: process.env.VUE_APP_IPIFY_API_KEY, ipAddress }
+        : { apiKey: process.env.VUE_APP_IPIFY_API_KEY },
     }
   );
 
