@@ -41,5 +41,10 @@ onMounted(async () => {
   const { ip, latitude, longitude } = response.data;
   ipAddress.value = ip;
   geoCoords.value = { latitude, longitude };
+  createMap({
+    map,
+    longitude: geoCoords.value!.longitude,
+    latitude: geoCoords.value!.latitude,
+  });
 });
 </script>
