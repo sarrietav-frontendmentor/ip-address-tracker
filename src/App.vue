@@ -6,7 +6,7 @@
           IP Address Tracker
         </h1>
       </header>
-      <IpInput />
+      <IpInput v-model="ipAddress" />
       <ResponseBox class="z-20" />
     </main>
     <div class="w-full h-full relative -mt-48">
@@ -24,6 +24,7 @@ import ResponseBox from './components/ResponseBox.vue';
 import { createMap } from './hooks/createMap';
 
 const map = ref<Leaflet.Map>();
+const ipAddress = ref<string>();
 
 onMounted(() => createMap(map));
 </script>
