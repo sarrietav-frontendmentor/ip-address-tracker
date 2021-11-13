@@ -23,29 +23,32 @@ import IpInput from './components/IpInput.vue';
 import ResponseBox from './components/ResponseBox.vue';
 import { createMap } from './hooks/createMap';
 import axios from 'axios';
+import { callGeolocationApi } from './hooks/ipGeolocationApi';
 
 const map = ref<Leaflet.Map>();
 const ipAddress = ref<string>();
-const geoCoords = ref<{
-  latitude: number;
-  longitude: number;
+const responseInfo = ref<{
+  ip: string;
+  city: string;
+  region: string;
+  lat: number;
+  lng: number;
+  postalCode: string;
+  timezone: string;
+  isp: string;
 }>();
 
 onMounted(async () => {
-  const response = await axios.get<{
-    ip: string;
-    latitude: number;
-    longitude: number;
-  }>('https://geo.ipify.org/api/v2/country,city', {
-    params: { ipKey: process.env.IPIFY_API_KEY },
-  });
-  const { ip, latitude, longitude } = response.data;
-  ipAddress.value = ip;
-  geoCoords.value = { latitude, longitude };
+  const response = await callGeolocationApi();
+
+  const { lng, lat } = response;
+
+  responseInfo.value = response;
+
   createMap({
     map,
-    longitude: geoCoords.value!.longitude,
-    latitude: geoCoords.value!.latitude,
+    longitude: lng,
+    latitude: lat,
   });
 });
 </script>
