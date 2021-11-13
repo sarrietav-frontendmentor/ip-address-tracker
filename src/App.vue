@@ -31,13 +31,14 @@ const geoCoords = ref<{
   longitude: number;
 }>();
 
-onMounted(() => createMap(map));
 onMounted(async () => {
   const response = await axios.get<{
     ip: string;
     latitude: number;
     longitude: number;
-  }>('https://json.geoiplookup.io/');
+  }>('https://geo.ipify.org/api/v2/country,city', {
+    params: { ipKey: process.env.IPIFY_API_KEY },
+  });
   const { ip, latitude, longitude } = response.data;
   ipAddress.value = ip;
   geoCoords.value = { latitude, longitude };
