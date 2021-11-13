@@ -23,11 +23,13 @@ interface IpifyResponse {
   isp: string;
 }
 
-export const callGeolocationApi = async () => {
+export const callGeolocationApi = async (ipAddress?: string) => {
   const response = await axios.get<IpifyResponse>(
     'https://geo.ipify.org/api/v2/country,city',
     {
-      params: { ipKey: process.env.IPIFY_API_KEY },
+      params: ipAddress
+        ? { ipKey: process.env.IPIFY_API_KEY, ipAddress }
+        : { ipKey: process.env.IPIFY_API_KEY },
     }
   );
 
