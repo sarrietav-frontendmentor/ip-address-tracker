@@ -8,7 +8,7 @@
       py-5
       rounded-xl
       z-10
-      h-72
+      absolute
     "
   >
     <div v-if="isLoading" class="flex justify-center items-center">

@@ -8,15 +8,17 @@
       </header>
       <IpInput v-model="ipAddress" @submit="handleIpInputSubmit" />
     </main>
-    <TheResponseBox
-      :is-loading="isLoading"
-      :ip="responseInfo?.ip"
-      :city="responseInfo?.city"
-      :region="responseInfo?.region"
-      :postal-code="responseInfo?.postalCode"
-      :timezone="responseInfo?.timezone"
-      :isp="responseInfo?.isp"
-    />
+    <div class="relative w-full">
+      <TheResponseBox
+        :is-loading="isLoading"
+        :ip="responseInfo?.ip"
+        :city="responseInfo?.city"
+        :region="responseInfo?.region"
+        :postal-code="responseInfo?.postalCode"
+        :timezone="responseInfo?.timezone"
+        :isp="responseInfo?.isp"
+      />
+    </div>
     <div class="w-full h-full relative">
       <div id="map" class="w-full h-full absolute z-0"></div>
     </div>
