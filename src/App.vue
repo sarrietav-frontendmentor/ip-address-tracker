@@ -7,31 +7,15 @@
         </h1>
       </header>
       <IpInput v-model="ipAddress" @submit="handleIpInputSubmit" />
-      <div
-        class="
-          bg-white
-          flex flex-col
-          justify-center
-          space-y-5
-          py-5
-          rounded-xl
-          z-10
-          h-72
-        "
-      >
-        <div v-if="isLoading" class="flex justify-center items-center">
-          <Spinner />
-        </div>
-        <ResponseBox
-          v-else
-          :ip="responseInfo?.ip"
-          :city="responseInfo?.city"
-          :region="responseInfo?.region"
-          :postal-code="responseInfo?.postalCode"
-          :timezone="responseInfo?.timezone"
-          :isp="responseInfo?.isp"
-        />
-      </div>
+      <ResponseBox
+        :is-loading="isLoading"
+        :ip="responseInfo?.ip"
+        :city="responseInfo?.city"
+        :region="responseInfo?.region"
+        :postal-code="responseInfo?.postalCode"
+        :timezone="responseInfo?.timezone"
+        :isp="responseInfo?.isp"
+      />
     </main>
     <div class="w-full h-full relative -mt-48">
       <div id="map" class="w-full h-full absolute z-0"></div>
@@ -48,7 +32,6 @@ import ResponseBox from './components/ResponseBox.vue';
 import { createMap } from './hooks/createMap';
 import { ApiResponse } from '@/types/types';
 import { mockApiCall } from '@/utils/mockApiCall';
-import Spinner from './components/Spinner.vue';
 
 const map = ref<Leaflet.Map>();
 const ipAddress = ref<string>();
