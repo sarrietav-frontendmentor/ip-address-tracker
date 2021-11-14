@@ -30,23 +30,16 @@ import { ref, onMounted } from 'vue';
 import IpInput from './components/IpInput.vue';
 import ResponseBox from './components/ResponseBox.vue';
 import { createMap } from './hooks/createMap';
-import { callGeolocationApi } from './hooks/ipGeolocationApi';
+import { ApiResponse } from '@/types/types';
+import { mockApiCall } from '@/utils/mockApiCall';
 
 const map = ref<Leaflet.Map>();
 const ipAddress = ref<string>();
-const responseInfo = ref<{
-  ip: string;
-  city: string;
-  region: string;
-  lat: number;
-  lng: number;
-  postalCode: string;
-  timezone: string;
-  isp: string;
-}>();
+
+const responseInfo = ref<ApiResponse>();
 
 onMounted(async () => {
-  const response = await callGeolocationApi();
+  const response = await mockApiCall();
 
   const { lng, lat } = response;
 
@@ -59,7 +52,7 @@ onMounted(async () => {
 });
 
 const handleIpInputSubmit = async () => {
-  const response = await callGeolocationApi(ipAddress.value);
+  const response = await mockApiCall(ipAddress.value);
 
   const { lng, lat } = response;
 
