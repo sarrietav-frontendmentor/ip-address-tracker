@@ -8,17 +8,19 @@
       </header>
       <IpInput v-model="ipAddress" @submit="handleIpInputSubmit" />
     </main>
-    <div class="relative w-full flex justify-center items-center">
-      <TheResponseBox
-        class="absolute"
-        :is-loading="isLoading"
-        :ip="responseInfo?.ip"
-        :city="responseInfo?.city"
-        :region="responseInfo?.region"
-        :postal-code="responseInfo?.postalCode"
-        :timezone="responseInfo?.timezone"
-        :isp="responseInfo?.isp"
-      />
+    <div class="w-full px-5">
+      <div class="relative flex justify-center items-center">
+        <TheResponseBox
+          class="absolute w-full shadow-2xl"
+          :is-loading="isLoading"
+          :ip="responseInfo?.ip"
+          :city="responseInfo?.city"
+          :region="responseInfo?.region"
+          :postal-code="responseInfo?.postalCode"
+          :timezone="responseInfo?.timezone"
+          :isp="responseInfo?.isp"
+        />
+      </div>
     </div>
     <div class="w-full h-full relative">
       <div id="map" class="w-full h-full absolute z-0"></div>
