@@ -14,7 +14,7 @@ export const mockApiCall = (ipAddress?: string): Promise<ApiResponse> => {
           region: 'NY',
           timezone: '-05:00',
         }),
-      1000
+      200
     );
   });
 };
