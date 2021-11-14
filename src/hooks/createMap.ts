@@ -1,4 +1,3 @@
-import { Ref } from 'vue';
 import Leaflet from 'leaflet';
 
 const svgIcon = Leaflet.divIcon({
