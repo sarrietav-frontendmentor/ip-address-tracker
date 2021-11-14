@@ -10,6 +10,7 @@
     </main>
     <div class="relative w-full flex justify-center items-center">
       <TheResponseBox
+        class="absolute"
         :is-loading="isLoading"
         :ip="responseInfo?.ip"
         :city="responseInfo?.city"
