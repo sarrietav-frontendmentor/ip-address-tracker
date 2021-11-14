@@ -1,3 +1,4 @@
+import { ApiResponse } from '@/types/types';
 import axios from 'axios';
 
 interface IpifyResponse {
@@ -25,16 +26,7 @@ interface IpifyResponse {
 
 export const callGeolocationApi = async (
   ipAddress?: string
-): Promise<{
-  ip: string;
-  city: string;
-  region: string;
-  lat: number;
-  lng: number;
-  postalCode: string;
-  timezone: string;
-  isp: string;
-}> => {
+): Promise<ApiResponse> => {
   const response = await axios.get<IpifyResponse>(
     'https://geo.ipify.org/api/v2/country,city',
     {
