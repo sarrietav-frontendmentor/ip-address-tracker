@@ -14,41 +14,46 @@
     <div v-if="isLoading" class="flex justify-center items-center">
       <Spinner />
     </div>
-    <div class="flex flex-col justify-center space-y-1">
-      <span class="text-center text-xs text-gray-500 font-bold uppercase">
-        Ip Address
-      </span>
-      <span class="text-center text-2xl text-gray-800 font-bold">{{ ip }}</span>
-    </div>
-    <div class="flex flex-col justify-center space-y-1">
-      <span class="text-center text-xs text-gray-500 font-bold uppercase">
-        Location
-      </span>
-      <span class="text-center text-2xl text-gray-800 font-bold">
-        {{ city }}, {{ region }} {{ postalCode }}
-      </span>
-    </div>
-    <div class="flex flex-col justify-center space-y-1">
-      <span class="text-center text-xs text-gray-500 font-bold uppercase">
-        Timezone
-      </span>
-      <span class="text-center text-2xl text-gray-800 font-bold">
-        UTC {{ timezone }}
-      </span>
-    </div>
-    <div class="flex flex-col justify-center space-y-1">
-      <span class="text-center text-xs text-gray-500 font-bold uppercase">
-        Isp
-      </span>
-      <span class="text-center text-2xl text-gray-800 font-bold">
-        {{ isp }}
-      </span>
+    <div v-else>
+      <div class="flex flex-col justify-center space-y-1">
+        <span class="text-center text-xs text-gray-500 font-bold uppercase">
+          Ip Address
+        </span>
+        <span class="text-center text-2xl text-gray-800 font-bold">{{
+          ip
+        }}</span>
+      </div>
+      <div class="flex flex-col justify-center space-y-1">
+        <span class="text-center text-xs text-gray-500 font-bold uppercase">
+          Location
+        </span>
+        <span class="text-center text-2xl text-gray-800 font-bold">
+          {{ city }}, {{ region }} {{ postalCode }}
+        </span>
+      </div>
+      <div class="flex flex-col justify-center space-y-1">
+        <span class="text-center text-xs text-gray-500 font-bold uppercase">
+          Timezone
+        </span>
+        <span class="text-center text-2xl text-gray-800 font-bold">
+          UTC {{ timezone }}
+        </span>
+      </div>
+      <div class="flex flex-col justify-center space-y-1">
+        <span class="text-center text-xs text-gray-500 font-bold uppercase">
+          Isp
+        </span>
+        <span class="text-center text-2xl text-gray-800 font-bold">
+          {{ isp }}
+        </span>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { defineProps } from 'vue';
+import Spinner from '@/components/Spinner.vue';
 
 defineProps({
   ip: String,
