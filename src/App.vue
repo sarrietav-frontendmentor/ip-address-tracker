@@ -35,10 +35,11 @@ import { mockApiCall } from '@/utils/mockApiCall';
 
 const map = ref<Leaflet.Map>();
 const ipAddress = ref<string>();
-
 const responseInfo = ref<ApiResponse>();
+const isLoading = ref<boolean>();
 
 onMounted(async () => {
+  isLoading.value = true;
   const response = await mockApiCall();
 
   ipAddress.value = response.ip;
@@ -51,9 +52,11 @@ onMounted(async () => {
     longitude: lng,
     latitude: lat,
   });
+  isLoading.value = false;
 });
 
 const handleIpInputSubmit = async () => {
+  isLoading.value = true;
   const response = await mockApiCall(ipAddress.value);
 
   ipAddress.value = response.ip;
@@ -66,5 +69,6 @@ const handleIpInputSubmit = async () => {
     longitude: lng,
     latitude: lat,
   });
+  isLoading.value = false;
 };
 </script>
