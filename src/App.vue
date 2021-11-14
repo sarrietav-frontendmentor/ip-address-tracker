@@ -41,6 +41,8 @@ const responseInfo = ref<ApiResponse>();
 onMounted(async () => {
   const response = await mockApiCall();
 
+  ipAddress.value = response.ip;
+
   const { lng, lat } = response;
 
   responseInfo.value = response;
@@ -53,6 +55,8 @@ onMounted(async () => {
 
 const handleIpInputSubmit = async () => {
   const response = await mockApiCall(ipAddress.value);
+
+  ipAddress.value = response.ip;
 
   const { lng, lat } = response;
 
