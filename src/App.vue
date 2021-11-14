@@ -7,7 +7,8 @@
         </h1>
       </header>
       <IpInput v-model="ipAddress" @submit="handleIpInputSubmit" />
-      <ResponseBox
+    </main>
+      <TheResponseBox
         :is-loading="isLoading"
         :ip="responseInfo?.ip"
         :city="responseInfo?.city"
@@ -16,7 +17,6 @@
         :timezone="responseInfo?.timezone"
         :isp="responseInfo?.isp"
       />
-    </main>
     <div class="w-full h-full relative -mt-48">
       <div id="map" class="w-full h-full absolute z-0"></div>
     </div>
@@ -28,7 +28,7 @@ import Leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { ref, onMounted } from 'vue';
 import IpInput from './components/IpInput.vue';
-import ResponseBox from './components/ResponseBox.vue';
+import TheResponseBox from './components/TheResponseBox.vue';
 import { createMap } from './hooks/createMap';
 import { ApiResponse } from '@/types/types';
 import { mockApiCall } from '@/utils/mockApiCall';
