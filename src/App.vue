@@ -24,7 +24,6 @@
         </div>
         <ResponseBox
           v-else
-          class="z-20"
           :ip="responseInfo?.ip"
           :city="responseInfo?.city"
           :region="responseInfo?.region"
