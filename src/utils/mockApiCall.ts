@@ -14,7 +14,7 @@ export const mockApiCall = (ipAddress?: string): Promise<ApiResponse> => {
           region: 'Bolivar',
           timezone: '+1:00',
         }),
-      1000
+      200
     );
   });
 };
