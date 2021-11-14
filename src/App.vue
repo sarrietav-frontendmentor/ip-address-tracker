@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen flex flex-col">
-    <main class="w-full bg-pattern flex flex-col p-5 space-y-5 z-10">
+    <main class="w-full bg-pattern flex flex-col p-5 space-y-5">
       <header>
         <h1 class="text-white text-center font-bold text-2xl">
           IP Address Tracker
@@ -16,22 +16,22 @@
           py-5
           rounded-xl
           z-10
+          h-72
         "
       >
         <div v-if="isLoading" class="flex justify-center items-center">
           <Spinner />
         </div>
-        <div v-else>
-          <ResponseBox
-            class="z-20"
-            :ip="responseInfo?.ip"
-            :city="responseInfo?.city"
-            :region="responseInfo?.region"
-            :postal-code="responseInfo?.postalCode"
-            :timezone="responseInfo?.timezone"
-            :isp="responseInfo?.isp"
-          />
-        </div>
+        <ResponseBox
+          v-else
+          class="z-20"
+          :ip="responseInfo?.ip"
+          :city="responseInfo?.city"
+          :region="responseInfo?.region"
+          :postal-code="responseInfo?.postalCode"
+          :timezone="responseInfo?.timezone"
+          :isp="responseInfo?.isp"
+        />
       </div>
     </main>
     <div class="w-full h-full relative -mt-48">
@@ -83,9 +83,10 @@ const handleIpInputSubmit = async () => {
 
   responseInfo.value = response;
 
+  map.value?.remove();
   map.value = createMap({
-    longitude: lng -1,
-    latitude: lat +1,
+    longitude: lng,
+    latitude: lat,
   });
   isLoading.value = false;
 };
