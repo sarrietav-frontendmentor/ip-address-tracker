@@ -3,7 +3,7 @@
     class="bg-white flex flex-col justify-center space-y-5 py-5 rounded-xl z-10"
   >
     <div v-if="isLoading" class="flex justify-center items-center">
-      <Spinner />
+      <TheSpinner />
     </div>
     <div v-else>
       <div class="flex flex-col justify-center space-y-1">
@@ -44,7 +44,7 @@
 
 <script lang="ts" setup>
 import { defineProps } from 'vue';
-import Spinner from '@/components/Spinner.vue';
+import TheSpinner from '@/components/TheSpinner.vue';
 
 defineProps({
   ip: String,
