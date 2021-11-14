@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen flex flex-col">
-    <main class="w-full bg-pattern flex flex-col p-5 space-y-5">
+    <main class="w-full bg-pattern flex flex-col p-5 space-y-5 h-96">
       <header>
         <h1 class="text-white text-center font-bold text-2xl">
           IP Address Tracker
