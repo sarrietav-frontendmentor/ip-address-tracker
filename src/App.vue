@@ -8,7 +8,7 @@
       </header>
       <IpInput v-model="ipAddress" @submit="handleIpInputSubmit" />
     </main>
-    <div class="relative w-full">
+    <div class="relative w-full flex justify-center items-center">
       <TheResponseBox
         :is-loading="isLoading"
         :ip="responseInfo?.ip"
