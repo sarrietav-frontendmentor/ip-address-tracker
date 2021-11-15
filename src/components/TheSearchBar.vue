@@ -44,3 +44,9 @@ const onInput = (event: Event): void => {
   emit('update:modelValue', (event.target as HTMLInputElement).value);
 };
 </script>
+
+<style scoped>
+input[type='text'][placeholder] {
+  text-overflow: ellipsis;
+}
+</style>
