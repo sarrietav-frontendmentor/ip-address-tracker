@@ -18,36 +18,35 @@
     >
       <ResponseBoxData>
         <template #header>Ip</template>
-        <template #data> {{ ip }} </template>
+        <template #data> {{ responseData?.ip }} </template>
       </ResponseBoxData>
       <ResponseBoxData>
         <template #header>Location</template>
-        <template #data> {{ city }}, {{ region }} {{ postalCode }} </template>
+        <template #data>
+          {{ responseData?.city }}, {{ responseData?.region }}
+          {{ responseData?.postalCode }}
+        </template>
       </ResponseBoxData>
       <ResponseBoxData>
         <template #header>Timezone</template>
-        <template #data> UTC {{ timezone }} </template>
+        <template #data> UTC {{ responseData?.timezone }} </template>
       </ResponseBoxData>
       <ResponseBoxData>
         <template #header>Isp</template>
-        <template #data> {{ isp }} </template>
+        <template #data> {{ responseData?.isp }} </template>
       </ResponseBoxData>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue';
+import { defineProps, PropType } from 'vue';
 import TheSpinner from '@/components/TheSpinner.vue';
 import ResponseBoxData from './ResponseBoxData.vue';
+import { ApiResponse } from '@/types/types';
 
 defineProps({
-  ip: String,
-  city: String,
-  timezone: String,
-  isp: String,
-  postalCode: String,
-  region: String,
+  responseData: Object as PropType<ApiResponse>,
   isLoading: Boolean,
 });
 </script>
