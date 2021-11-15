@@ -4,7 +4,7 @@
       flex flex-col
       justify-center
       lg:justify-start lg:items-start
-      space-y-1
+      space-y-2
       lg:p-6
     "
   >
