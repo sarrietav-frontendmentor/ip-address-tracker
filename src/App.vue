@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="w-full h-full relative">
-      <div id="map" class="w-full h-full absolute z-0"></div>
+      <div id="map" class="w-full h-full absolute z-0 cursor-move"></div>
     </div>
   </main>
 </template>
