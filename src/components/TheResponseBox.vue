@@ -10,24 +10,18 @@
         <template #header>Ip</template>
         <template #data> {{ ip }} </template>
       </ResponseBoxData>
-      <div class="flex flex-col justify-center space-y-1">
-        <ResponseBoxData>
-          <template #header>Location</template>
-          <template #data> {{ city }}, {{ region }} {{ postalCode }} </template>
-        </ResponseBoxData>
-      </div>
-      <div class="flex flex-col justify-center space-y-1">
-        <ResponseBoxData>
-          <template #header>Timezone</template>
-          <template #data> UTC {{ timezone }} </template>
-        </ResponseBoxData>
-      </div>
-      <div class="flex flex-col justify-center space-y-1">
-        <ResponseBoxData>
-          <template #header>Isp</template>
-          <template #data> {{ isp }} </template>
-        </ResponseBoxData>
-      </div>
+      <ResponseBoxData>
+        <template #header>Location</template>
+        <template #data> {{ city }}, {{ region }} {{ postalCode }} </template>
+      </ResponseBoxData>
+      <ResponseBoxData>
+        <template #header>Timezone</template>
+        <template #data> UTC {{ timezone }} </template>
+      </ResponseBoxData>
+      <ResponseBoxData>
+        <template #header>Isp</template>
+        <template #data> {{ isp }} </template>
+      </ResponseBoxData>
     </div>
   </div>
 </template>
