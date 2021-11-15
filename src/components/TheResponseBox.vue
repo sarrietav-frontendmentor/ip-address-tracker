@@ -6,37 +6,27 @@
       <TheSpinner />
     </div>
     <div v-else>
+      <TheResponseBoxData>
+        <template #header>Ip</template>
+        <template #data> {{ ip }} </template>
+      </TheResponseBoxData>
       <div class="flex flex-col justify-center space-y-1">
-        <span class="text-center text-xs text-gray-500 font-bold uppercase">
-          Ip Address
-        </span>
-        <span class="text-center text-2xl text-gray-800 font-bold">{{
-          ip
-        }}</span>
+        <TheResponseBoxData>
+          <template #header>Location</template>
+          <template #data> {{ city }}, {{ region }} {{ postalCode }} </template>
+        </TheResponseBoxData>
       </div>
       <div class="flex flex-col justify-center space-y-1">
-        <span class="text-center text-xs text-gray-500 font-bold uppercase">
-          Location
-        </span>
-        <span class="text-center text-2xl text-gray-800 font-bold">
-          {{ city }}, {{ region }} {{ postalCode }}
-        </span>
+        <TheResponseBoxData>
+          <template #header>Timezone</template>
+          <template #data> UTC {{ timezone }} </template>
+        </TheResponseBoxData>
       </div>
       <div class="flex flex-col justify-center space-y-1">
-        <span class="text-center text-xs text-gray-500 font-bold uppercase">
-          Timezone
-        </span>
-        <span class="text-center text-2xl text-gray-800 font-bold">
-          UTC {{ timezone }}
-        </span>
-      </div>
-      <div class="flex flex-col justify-center space-y-1">
-        <span class="text-center text-xs text-gray-500 font-bold uppercase">
-          Isp
-        </span>
-        <span class="text-center text-2xl text-gray-800 font-bold">
-          {{ isp }}
-        </span>
+        <TheResponseBoxData>
+          <template #header>Isp</template>
+          <template #data> {{ isp }} </template>
+        </TheResponseBoxData>
       </div>
     </div>
   </div>
@@ -45,6 +35,7 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
 import TheSpinner from '@/components/TheSpinner.vue';
+import TheResponseBoxData from './TheResponseBoxData.vue';
 
 defineProps({
   ip: String,
