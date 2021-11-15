@@ -1,13 +1,11 @@
 <template>
-  <div class="h-screen flex flex-col">
-    <main class="w-full bg-pattern flex flex-col p-5 space-y-5 h-96">
-      <header>
-        <h1 class="text-white text-center font-bold text-2xl">
-          IP Address Tracker
-        </h1>
-      </header>
+  <main class="h-screen flex flex-col">
+    <header class="w-full bg-pattern flex flex-col p-5 space-y-5 h-96">
+      <h1 class="text-white text-center font-bold text-2xl">
+        IP Address Tracker
+      </h1>
       <IpInput v-model="ipAddress" @submit="handleIpInputSubmit" />
-    </main>
+    </header>
     <div class="w-full px-5">
       <div class="relative flex justify-center items-center">
         <TheResponseBox
@@ -25,7 +23,7 @@
     <div class="w-full h-full relative">
       <div id="map" class="w-full h-full absolute z-0"></div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script lang="ts" setup>
