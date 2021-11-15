@@ -1,7 +1,16 @@
 <template>
   <main class="h-screen flex flex-col">
     <header
-      class="w-full bg-pattern bg-cover flex flex-col p-5 lg:px-[30rem] space-y-5 pb-44 lg:pb-32"
+      class="
+        w-full
+        bg-pattern bg-cover
+        flex flex-col
+        p-5
+        lg:px-[30rem]
+        space-y-5
+        pb-44
+        lg:pb-32
+      "
     >
       <h1
         class="
@@ -21,12 +30,7 @@
         <TheResponseBox
           class="absolute w-full shadow-2xl"
           :is-loading="isLoading"
-          :ip="responseInfo?.ip"
-          :city="responseInfo?.city"
-          :region="responseInfo?.region"
-          :postal-code="responseInfo?.postalCode"
-          :timezone="responseInfo?.timezone"
-          :isp="responseInfo?.isp"
+          :response-data="responseInfo"
         />
       </div>
     </div>
