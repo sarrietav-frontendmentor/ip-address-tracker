@@ -30,7 +30,7 @@
         <TheResponseBox
           class="absolute w-full shadow-2xl"
           :is-loading="isLoading"
-          :response-data="responseInfo"
+          :response-data="responseData"
         />
       </div>
     </div>
@@ -52,7 +52,7 @@ import { mockApiCall } from '@/utils/mockApiCall';
 
 const map = ref<Leaflet.Map>();
 const ipAddress = ref<string>();
-const responseInfo = ref<ApiResponse>();
+const responseData = ref<ApiResponse>();
 const isLoading = ref<boolean>();
 
 onMounted(async () => {
@@ -63,7 +63,7 @@ onMounted(async () => {
 
   const { lng, lat } = response;
 
-  responseInfo.value = response;
+  responseData.value = response;
 
   map.value = createMap({
     longitude: lng,
@@ -80,7 +80,7 @@ const handleIpInputSubmit = async () => {
 
   const { lng, lat } = response;
 
-  responseInfo.value = response;
+  responseData.value = response;
 
   map.value?.remove();
   map.value = createMap({
