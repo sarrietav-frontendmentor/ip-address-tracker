@@ -4,7 +4,7 @@
       <h1 class="text-white text-center font-bold text-2xl">
         IP Address Tracker
       </h1>
-      <IpInput v-model="ipAddress" @submit="handleIpInputSubmit" />
+      <TheSearchBar v-model="ipAddress" @submit="handleIpInputSubmit" />
     </header>
     <div class="w-full px-5">
       <div class="relative flex justify-center items-center">
@@ -30,7 +30,7 @@
 import Leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { ref, onMounted } from 'vue';
-import IpInput from './components/IpInput.vue';
+import TheSearchBar from './components/TheSearchBar.vue';
 import TheResponseBox from './components/TheResponseBox.vue';
 import { createMap } from './hooks/createMap';
 import { ApiResponse } from '@/types/types';
