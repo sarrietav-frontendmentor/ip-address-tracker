@@ -3,7 +3,7 @@
     <header
       class="w-full bg-pattern flex flex-col p-5 lg:px-[30rem] space-y-5 pb-36"
     >
-      <h1 class="text-white text-center font-bold text-2xl">
+      <h1 class="text-white text-center font-bold lg:font-medium text-2xl lg:text-3xl">
         IP Address Tracker
       </h1>
       <TheSearchBar v-model="ipAddress" @submit="handleIpInputSubmit" />
