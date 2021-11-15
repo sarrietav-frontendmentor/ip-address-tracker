@@ -4,6 +4,7 @@
       type="text"
       :value="modelValue"
       @input="onInput"
+      placeholder="Search for any IP address or domain"
       class="
         rounded-tl-xl rounded-bl-xl
         flex-grow
