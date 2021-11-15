@@ -16,7 +16,7 @@
       </h1>
       <TheSearchBar v-model="ipAddress" @submit="handleIpInputSubmit" />
     </header>
-    <div class="w-full px-5">
+    <div class="w-full px-5 lg:px-40">
       <div class="relative flex justify-center items-center">
         <TheResponseBox
           class="absolute w-full shadow-2xl"
