@@ -1,7 +1,7 @@
 <template>
   <main class="h-screen flex flex-col">
     <header
-      class="w-full bg-pattern flex flex-col p-5 lg:px-[30rem] space-y-5 pb-36"
+      class="w-full bg-pattern bg-cover flex flex-col p-5 lg:px-[30rem] space-y-5 pb-36"
     >
       <h1
         class="
