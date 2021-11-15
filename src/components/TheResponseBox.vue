@@ -6,27 +6,27 @@
       <TheSpinner />
     </div>
     <div v-else>
-      <TheResponseBoxData>
+      <ResponseBoxData>
         <template #header>Ip</template>
         <template #data> {{ ip }} </template>
-      </TheResponseBoxData>
+      </ResponseBoxData>
       <div class="flex flex-col justify-center space-y-1">
-        <TheResponseBoxData>
+        <ResponseBoxData>
           <template #header>Location</template>
           <template #data> {{ city }}, {{ region }} {{ postalCode }} </template>
-        </TheResponseBoxData>
+        </ResponseBoxData>
       </div>
       <div class="flex flex-col justify-center space-y-1">
-        <TheResponseBoxData>
+        <ResponseBoxData>
           <template #header>Timezone</template>
           <template #data> UTC {{ timezone }} </template>
-        </TheResponseBoxData>
+        </ResponseBoxData>
       </div>
       <div class="flex flex-col justify-center space-y-1">
-        <TheResponseBoxData>
+        <ResponseBoxData>
           <template #header>Isp</template>
           <template #data> {{ isp }} </template>
-        </TheResponseBoxData>
+        </ResponseBoxData>
       </div>
     </div>
   </div>
@@ -35,7 +35,7 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
 import TheSpinner from '@/components/TheSpinner.vue';
-import TheResponseBoxData from './TheResponseBoxData.vue';
+import ResponseBoxData from './ResponseBoxData.vue';
 
 defineProps({
   ip: String,
