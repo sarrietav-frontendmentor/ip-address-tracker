@@ -5,7 +5,17 @@
     <div v-if="isLoading" class="flex justify-center items-center">
       <TheSpinner />
     </div>
-    <div v-else class="lg:grid grid-cols-4 items-strech divide-x-2 divide space-y-3 lg:space-y-0">
+    <div
+      v-else
+      class="
+        lg:grid
+        grid-cols-4
+        items-strech
+        divide-x-2 divide
+        space-y-3
+        lg:space-y-0
+      "
+    >
       <ResponseBoxData>
         <template #header>Ip</template>
         <template #data> {{ ip }} </template>
