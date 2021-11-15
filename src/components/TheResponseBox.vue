@@ -5,39 +5,23 @@
     <div v-if="isLoading" class="flex justify-center items-center">
       <TheSpinner />
     </div>
-    <div v-else>
-      <div class="flex flex-col justify-center space-y-1">
-        <span class="text-center text-xs text-gray-500 font-bold uppercase">
-          Ip Address
-        </span>
-        <span class="text-center text-2xl text-gray-800 font-bold">{{
-          ip
-        }}</span>
-      </div>
-      <div class="flex flex-col justify-center space-y-1">
-        <span class="text-center text-xs text-gray-500 font-bold uppercase">
-          Location
-        </span>
-        <span class="text-center text-2xl text-gray-800 font-bold">
-          {{ city }}, {{ region }} {{ postalCode }}
-        </span>
-      </div>
-      <div class="flex flex-col justify-center space-y-1">
-        <span class="text-center text-xs text-gray-500 font-bold uppercase">
-          Timezone
-        </span>
-        <span class="text-center text-2xl text-gray-800 font-bold">
-          UTC {{ timezone }}
-        </span>
-      </div>
-      <div class="flex flex-col justify-center space-y-1">
-        <span class="text-center text-xs text-gray-500 font-bold uppercase">
-          Isp
-        </span>
-        <span class="text-center text-2xl text-gray-800 font-bold">
-          {{ isp }}
-        </span>
-      </div>
+    <div v-else class="lg:grid grid-cols-4 items-strech divide-x-2 divide">
+      <ResponseBoxData>
+        <template #header>Ip</template>
+        <template #data> {{ ip }} </template>
+      </ResponseBoxData>
+      <ResponseBoxData>
+        <template #header>Location</template>
+        <template #data> {{ city }}, {{ region }} {{ postalCode }} </template>
+      </ResponseBoxData>
+      <ResponseBoxData>
+        <template #header>Timezone</template>
+        <template #data> UTC {{ timezone }} </template>
+      </ResponseBoxData>
+      <ResponseBoxData>
+        <template #header>Isp</template>
+        <template #data> {{ isp }} </template>
+      </ResponseBoxData>
     </div>
   </div>
 </template>
@@ -45,6 +29,7 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
 import TheSpinner from '@/components/TheSpinner.vue';
+import ResponseBoxData from './ResponseBoxData.vue';
 
 defineProps({
   ip: String,

@@ -1,12 +1,22 @@
 <template>
   <main class="h-screen flex flex-col">
-    <header class="w-full bg-pattern flex flex-col p-5 space-y-5 pb-36">
-      <h1 class="text-white text-center font-bold text-2xl">
+    <header
+      class="w-full bg-pattern bg-cover flex flex-col p-5 lg:px-[30rem] space-y-5 pb-36"
+    >
+      <h1
+        class="
+          text-white text-center
+          font-bold
+          lg:font-medium
+          text-2xl
+          lg:text-3xl
+        "
+      >
         IP Address Tracker
       </h1>
       <TheSearchBar v-model="ipAddress" @submit="handleIpInputSubmit" />
     </header>
-    <div class="w-full px-5">
+    <div class="w-full px-5 lg:px-40">
       <div class="relative flex justify-center items-center">
         <TheResponseBox
           class="absolute w-full shadow-2xl"
