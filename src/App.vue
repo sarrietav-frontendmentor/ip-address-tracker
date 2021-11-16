@@ -41,52 +41,38 @@
 </template>
 
 <script lang="ts" setup>
-import Leaflet from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import { Map } from 'leaflet';
 import { ref, onMounted } from 'vue';
-import TheSearchBar from './components/TheSearchBar.vue';
-import TheResponseBox from './components/TheResponseBox.vue';
-import { createMap } from './hooks/createMap';
-import { ApiResponse } from '@/types/types';
-import { mockApiCall } from '@/utils/mockApiCall';
+import 'leaflet/dist/leaflet.css';
 
-const map = ref<Leaflet.Map>();
+import TheSearchBar from '@/components/TheSearchBar.vue';
+import TheResponseBox from '@/components/TheResponseBox.vue';
+
+import { ApiResponse } from '@/types/types';
+
+import { useGeoApi } from '@/utils/useGeoApi';
+
+const map = ref<Map>();
 const ipAddress = ref<string>();
 const responseData = ref<ApiResponse>();
 const isLoading = ref<boolean>();
 
-onMounted(async () => {
-  isLoading.value = true;
-  const response = await mockApiCall();
-
-  ipAddress.value = response.ip;
-
-  const { lng, lat } = response;
-
-  responseData.value = response;
-
-  map.value = createMap({
-    longitude: lng,
-    latitude: lat,
-  });
-  isLoading.value = false;
-});
+onMounted(handleGeoApi);
 
 const handleIpInputSubmit = async () => {
+  map.value?.remove();
+  await handleGeoApi();
+};
+
+async function handleGeoApi() {
   isLoading.value = true;
-  const response = await mockApiCall(ipAddress.value);
+
+  const { leafletMap, response } = await useGeoApi(ipAddress.value);
 
   ipAddress.value = response.ip;
-
-  const { lng, lat } = response;
-
   responseData.value = response;
+  map.value = leafletMap;
 
-  map.value?.remove();
-  map.value = createMap({
-    longitude: lng,
-    latitude: lat,
-  });
   isLoading.value = false;
-};
+}
 </script>
