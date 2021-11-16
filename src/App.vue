@@ -42,14 +42,15 @@
 
 <script lang="ts" setup>
 import { Map } from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 import { ref, onMounted } from 'vue';
-import TheSearchBar from './components/TheSearchBar.vue';
-import TheResponseBox from './components/TheResponseBox.vue';
+import 'leaflet/dist/leaflet.css';
+
+import TheSearchBar from '@/components/TheSearchBar.vue';
+import TheResponseBox from '@/components/TheResponseBox.vue';
 
 import { ApiResponse } from '@/types/types';
 
-import { useGeoApi } from './utils/useGeoApi';
+import { useGeoApi } from '@/utils/useGeoApi';
 
 const map = ref<Map>();
 const ipAddress = ref<string>();
