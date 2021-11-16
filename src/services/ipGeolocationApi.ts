@@ -26,18 +26,23 @@ export const callGeolocationApi = async (
 
   const {
     ip,
-    location: { city, region, lat, lng, postalCode, timezone },
-    isp,
+    city,
+    org,
+    latitude,
+    longitude,
+    postal,
+    region_code,
+    utc_offset,
   } = response.data;
 
   return {
     ip,
     city,
-    region,
-    lat,
-    lng,
-    postalCode,
-    timezone,
-    isp,
+    region: region_code,
+    lat: latitude,
+    lng: longitude,
+    postalCode: postal,
+    timezone: utc_offset,
+    isp: org,
   };
 };
