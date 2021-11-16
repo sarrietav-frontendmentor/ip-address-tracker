@@ -2,24 +2,14 @@ import { ApiResponse } from '@/types/types';
 import axios from 'axios';
 
 interface IpapiResponse {
-  ip: '208.67.222.222';
-  city: 'San Francisco';
-  region: 'California';
+  ip: '8.8.8.8';
+  city: 'Mountain View';
   region_code: 'CA';
-  country: 'US';
-  country_name: 'United States';
-  continent_code: 'NA';
-  in_eu: false;
-  postal: '94107';
-  latitude: 37.7697;
-  longitude: -122.3933;
-  timezone: 'America/Los_Angeles';
+  postal: '94035';
+  latitude: 37.386;
+  longitude: -122.0838;
   utc_offset: '-0800';
-  country_calling_code: '+1';
-  currency: 'USD';
-  languages: 'en-US,es-US,haw,fr';
-  asn: 'AS36692';
-  org: 'OpenDNS, LLC';
+  org: 'Google LLC';
 }
 
 export const callGeolocationApi = async (
