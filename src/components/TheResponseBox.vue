@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, PropType } from 'vue';
+import { PropType } from 'vue';
 import TheSpinner from '@/components/TheSpinner.vue';
 import ResponseBoxData from './ResponseBoxData.vue';
 import { ApiResponse } from '@/types/types';
