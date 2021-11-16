@@ -43,13 +43,13 @@
 <script lang="ts" setup>
 import { Map } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { ref, onMounted, reactive } from 'vue';
+import { ref, onMounted } from 'vue';
 import TheSearchBar from './components/TheSearchBar.vue';
 import TheResponseBox from './components/TheResponseBox.vue';
 
 import { ApiResponse } from '@/types/types';
 
-import { handleApiResponse } from './hooks/handleApi';
+import { useGeoApi } from './hooks/useGeoApi';
 
 const map = ref<Map>();
 const ipAddress = ref<string>();
@@ -59,7 +59,7 @@ const isLoading = ref<boolean>();
 onMounted(async () => {
   isLoading.value = true;
 
-  const { leafletMap, response } = await reactive(handleApiResponse());
+  const { leafletMap, response } = await useGeoApi();
 
   ipAddress.value = response.ip;
   responseData.value = response;
@@ -72,9 +72,7 @@ const handleIpInputSubmit = async () => {
   isLoading.value = true;
 
   map.value?.remove();
-  const { leafletMap, response } = await reactive(
-    handleApiResponse(ipAddress.value)
-  );
+  const { leafletMap, response } = await useGeoApi(ipAddress.value);
 
   ipAddress.value = response.ip;
   responseData.value = response;
