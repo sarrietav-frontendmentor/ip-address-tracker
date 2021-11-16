@@ -41,52 +41,45 @@
 </template>
 
 <script lang="ts" setup>
-import Leaflet from 'leaflet';
+import { Map } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, reactive } from 'vue';
 import TheSearchBar from './components/TheSearchBar.vue';
 import TheResponseBox from './components/TheResponseBox.vue';
-import { createMap } from './hooks/createMap';
-import { ApiResponse } from '@/types/types';
-import { mockApiCall } from '@/utils/mockApiCall';
 
-const map = ref<Leaflet.Map>();
+import { ApiResponse } from '@/types/types';
+
+import { handleApiResponse } from './hooks/handleApi';
+
+const map = ref<Map>();
 const ipAddress = ref<string>();
 const responseData = ref<ApiResponse>();
 const isLoading = ref<boolean>();
 
 onMounted(async () => {
   isLoading.value = true;
-  const response = await mockApiCall();
+
+  const { leafletMap, response } = await reactive(handleApiResponse());
 
   ipAddress.value = response.ip;
-
-  const { lng, lat } = response;
-
   responseData.value = response;
+  map.value = leafletMap;
 
-  map.value = createMap({
-    longitude: lng,
-    latitude: lat,
-  });
   isLoading.value = false;
 });
 
 const handleIpInputSubmit = async () => {
   isLoading.value = true;
-  const response = await mockApiCall(ipAddress.value);
-
-  ipAddress.value = response.ip;
-
-  const { lng, lat } = response;
-
-  responseData.value = response;
 
   map.value?.remove();
-  map.value = createMap({
-    longitude: lng,
-    latitude: lat,
-  });
+  const { leafletMap, response } = await reactive(
+    handleApiResponse(ipAddress.value)
+  );
+
+  ipAddress.value = response.ip;
+  responseData.value = response;
+  map.value = leafletMap;
+
   isLoading.value = false;
 };
 </script>
