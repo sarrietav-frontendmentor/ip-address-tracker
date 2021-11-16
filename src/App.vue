@@ -49,7 +49,7 @@ import TheResponseBox from './components/TheResponseBox.vue';
 
 import { ApiResponse } from '@/types/types';
 
-import { useGeoApi } from './hooks/useGeoApi';
+import { useGeoApi } from './utils/useGeoApi';
 
 const map = ref<Map>();
 const ipAddress = ref<string>();

@@ -1,7 +1,7 @@
 import { Map } from 'leaflet';
 import { ApiResponse } from '@/types/types';
 import { mockApiCall } from '@/utils/mockApiCall';
-import { createMap } from '../utils/createMap';
+import { createMap } from './createMap';
 
 export const useGeoApi = async (
   ipAddress?: string
