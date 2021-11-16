@@ -16,7 +16,7 @@ export const callGeolocationApi = async (
   ipAddress?: string
 ): Promise<ApiResponse> => {
   const response = await axios.get<IpapiResponse>(
-    'https://ipapi.co/json'
+    `https://ipapi.co/${ipAddress ? ipAddress + '/' : ''}json/`
   );
 
   const {
