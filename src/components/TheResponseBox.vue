@@ -29,7 +29,7 @@
       </ResponseBoxData>
       <ResponseBoxData>
         <template #header>Timezone</template>
-        <template #data> UTC {{ responseData?.timezone }} </template>
+        <template #data> UTC {{ timezoneWithColon }} </template>
       </ResponseBoxData>
       <ResponseBoxData>
         <template #header>Isp</template>
@@ -40,13 +40,23 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType } from 'vue';
+import { computed, PropType } from 'vue';
 import TheSpinner from '@/components/TheSpinner.vue';
 import ResponseBoxData from './ResponseBoxData.vue';
 import { ApiResponse } from '@/types/types';
 
-defineProps({
+const props = defineProps({
   responseData: Object as PropType<ApiResponse>,
   isLoading: Boolean,
+});
+
+const timezoneWithColon = computed(() => {
+  const timezone = props.responseData?.timezone;
+
+  return [
+    timezone?.slice(0, timezone.length - 2),
+    ':',
+    timezone?.slice(timezone.length - 2),
+  ].join('');
 });
 </script>
