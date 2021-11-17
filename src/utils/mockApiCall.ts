@@ -5,9 +5,9 @@ export const mockApiCall = (ipAddress?: string): Promise<ApiResponse> => {
     setTimeout(
       () =>
         resolve({
-          city: 'New york',
-          ip: ipAddress ?? '127.0.0.1',
-          isp: 'SpaceX Starlink',
+          city: 'New yorkkkkkk',
+          ip: ipAddress ?? '255.255.255.255',
+          isp: 'SpaceX Amazonwebservice Starlinkkkkkk',
           lat: 40.7166638,
           lng: -74.0,
           postalCode: '10001',

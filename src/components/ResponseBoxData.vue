@@ -5,6 +5,7 @@
       justify-center
       lg:justify-start lg:items-start
       space-y-2
+      px-5
       lg:p-6
     "
   >
@@ -19,8 +20,19 @@
     >
       <slot name="header"></slot>
     </span>
-    <span class="text-center lg:text-left text-2xl text-gray-800 font-bold">
+    <p
+      class="
+        text-center
+        lg:text-left
+        text-2xl text-gray-800
+        font-bold
+        overflow-ellipsis
+        whitespace-nowrap
+        overflow-hidden
+        lg:whitespace-normal lg:break-all
+      "
+    >
       <slot name="data"></slot>
-    </span>
+    </p>
   </div>
 </template>
