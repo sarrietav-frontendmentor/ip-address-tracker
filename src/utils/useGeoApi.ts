@@ -1,12 +1,12 @@
 import { Map } from 'leaflet';
 import { ApiResponse } from '@/types/types';
 import { createMap } from './createMap';
-import { callGeolocationApi } from '@/services/ipGeolocationApi';
+import { mockApiCall } from './mockApiCall';
 
 export const useGeoApi = async (
   ipAddress?: string
 ): Promise<{ response: ApiResponse; leafletMap: Map }> => {
-  const response = await callGeolocationApi(ipAddress);
+  const response = await mockApiCall(ipAddress);
 
   const { lng, lat } = response;
 
