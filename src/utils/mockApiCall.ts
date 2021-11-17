@@ -7,7 +7,7 @@ export const mockApiCall = (ipAddress?: string): Promise<ApiResponse> => {
         resolve({
           city: 'New yorkkkkkk',
           ip: ipAddress ?? '255.255.255.255',
-          isp: 'SpaceX Starlinkkkkkk',
+          isp: 'SpaceX Amazonwebservice Starlinkkkkkk',
           lat: 40.7166638,
           lng: -74.0,
           postalCode: '10001',

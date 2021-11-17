@@ -20,7 +20,7 @@
     >
       <slot name="header"></slot>
     </span>
-    <span
+    <p
       class="
         text-center
         lg:text-left
@@ -29,9 +29,10 @@
         overflow-ellipsis
         whitespace-nowrap
         overflow-hidden
+        lg:whitespace-normal lg:break-all
       "
     >
       <slot name="data"></slot>
-    </span>
+    </p>
   </div>
 </template>
