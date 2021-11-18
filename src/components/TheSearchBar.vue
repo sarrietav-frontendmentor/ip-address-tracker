@@ -15,6 +15,7 @@
     />
     <button
       type="submit"
+      aria-label="Submit button"
       class="
         inline
         bg-black
