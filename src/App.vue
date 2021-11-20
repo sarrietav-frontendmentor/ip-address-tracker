@@ -60,14 +60,16 @@ const isLoading = ref<boolean>();
 onMounted(handleGeoApi);
 
 const handleIpInputSubmit = async () => {
-  map.value?.remove();
-  await handleGeoApi();
+  await handleGeoApi(map.value);
 };
 
-async function handleGeoApi() {
+async function handleGeoApi(leafletMapInstance?: Map) {
   isLoading.value = true;
 
-  const { leafletMap, response } = await useGeoApi(ipAddress.value);
+  const { leafletMap, response } = await useGeoApi(
+    ipAddress.value,
+    leafletMapInstance
+  );
 
   ipAddress.value = response.ip;
   responseData.value = response;
