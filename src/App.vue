@@ -29,6 +29,16 @@
       <div class="relative flex justify-center items-center">
         <TheCard class="absolute w-full shadow-2xl">
           <TheSpinner v-if="isLoading" />
+          <div
+            v-else-if="isError"
+            class="flex flex-col justify-center items-center space-y-5"
+          >
+            <img src="./assets/adblock.png" width="60" height="60" />
+            <p class="text-lg font-medium">
+              An error has occured, please disable your ad blocker or try again
+              later.
+            </p>
+          </div>
           <TheResponseBox v-else :response-data="responseData" />
         </TheCard>
       </div>
@@ -57,7 +67,7 @@ const map = ref<Map>();
 const ipAddress = ref<string>();
 const responseData = ref<ApiResponse>();
 const isLoading = ref<boolean>();
-const isError = ref<boolean>(false);
+const isError = ref<boolean>(true);
 
 onMounted(handleGeoApi);
 
