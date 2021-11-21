@@ -1,9 +1,5 @@
 <template>
-  <div v-if="isLoading" class="flex justify-center items-center">
-    <TheSpinner />
-  </div>
   <div
-    v-else
     class="
       lg:grid
       grid-cols-4
@@ -37,13 +33,12 @@
 
 <script lang="ts" setup>
 import { computed, PropType } from 'vue';
-import TheSpinner from '@/components/TheSpinner.vue';
+
 import ResponseBoxData from './ResponseBoxData.vue';
 import { ApiResponse } from '@/types/types';
 
 const props = defineProps({
   responseData: Object as PropType<ApiResponse>,
-  isLoading: Boolean,
 });
 
 const timezoneWithColon = computed(() => {

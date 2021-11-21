@@ -27,12 +27,9 @@
     </header>
     <div class="w-full px-5 lg:px-40">
       <div class="relative flex justify-center items-center">
-        <TheCard>
-          <TheResponseBox
-            class="absolute w-full shadow-2xl"
-            :is-loading="isLoading"
-            :response-data="responseData"
-          />
+        <TheCard class="absolute w-full shadow-2xl">
+          <TheSpinner v-if="isLoading" />
+          <TheResponseBox v-else :response-data="responseData" />
         </TheCard>
       </div>
     </div>
@@ -54,6 +51,7 @@ import { ApiResponse } from '@/types/types';
 
 import { useGeoApi } from '@/utils/useGeoApi';
 import TheCard from './components/TheCard.vue';
+import TheSpinner from './components/TheSpinner.vue';
 
 const map = ref<Map>();
 const ipAddress = ref<string>();
