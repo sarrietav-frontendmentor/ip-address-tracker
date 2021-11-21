@@ -29,16 +29,7 @@
       <div class="relative flex justify-center items-center">
         <TheCard class="absolute w-full shadow-2xl">
           <TheSpinner v-if="isLoading" />
-          <div
-            v-else-if="isError"
-            class="flex flex-col justify-center items-center space-y-5"
-          >
-            <img src="./assets/adblock.png" width="60" height="60" />
-            <p class="text-lg font-medium">
-              An error has occured, please disable your ad blocker or try again
-              later.
-            </p>
-          </div>
+          <TheAdBlockerWarning v-else-if="isError" />
           <TheResponseBox v-else :response-data="responseData" />
         </TheCard>
       </div>
@@ -62,6 +53,7 @@ import { ApiResponse } from '@/types/types';
 import { useGeoApi } from '@/utils/useGeoApi';
 import TheCard from './components/TheCard.vue';
 import TheSpinner from './components/TheSpinner.vue';
+import TheAdBlockerWarning from './components/TheAdBlockerWarning.vue';
 
 const map = ref<Map>();
 const ipAddress = ref<string>();
