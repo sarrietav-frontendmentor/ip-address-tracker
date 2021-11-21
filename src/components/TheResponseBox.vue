@@ -1,41 +1,37 @@
 <template>
+  <div v-if="isLoading" class="flex justify-center items-center">
+    <TheSpinner />
+  </div>
   <div
-    class="bg-white flex flex-col justify-center space-y-5 py-5 rounded-xl z-10"
+    v-else
+    class="
+      lg:grid
+      grid-cols-4
+      items-strech
+      divide-x-2 divide
+      space-y-3
+      lg:space-y-0
+    "
   >
-    <div v-if="isLoading" class="flex justify-center items-center">
-      <TheSpinner />
-    </div>
-    <div
-      v-else
-      class="
-        lg:grid
-        grid-cols-4
-        items-strech
-        divide-x-2 divide
-        space-y-3
-        lg:space-y-0
-      "
-    >
-      <ResponseBoxData>
-        <template #header>Ip</template>
-        <template #data> {{ responseData?.ip }} </template>
-      </ResponseBoxData>
-      <ResponseBoxData>
-        <template #header>Location</template>
-        <template #data>
-          {{ responseData?.city }}, {{ responseData?.region }}
-          {{ responseData?.postalCode }}
-        </template>
-      </ResponseBoxData>
-      <ResponseBoxData>
-        <template #header>Timezone</template>
-        <template #data> UTC {{ timezoneWithColon }} </template>
-      </ResponseBoxData>
-      <ResponseBoxData>
-        <template #header>Isp</template>
-        <template #data> {{ responseData?.isp }} </template>
-      </ResponseBoxData>
-    </div>
+    <ResponseBoxData>
+      <template #header>Ip</template>
+      <template #data> {{ responseData?.ip }} </template>
+    </ResponseBoxData>
+    <ResponseBoxData>
+      <template #header>Location</template>
+      <template #data>
+        {{ responseData?.city }}, {{ responseData?.region }}
+        {{ responseData?.postalCode }}
+      </template>
+    </ResponseBoxData>
+    <ResponseBoxData>
+      <template #header>Timezone</template>
+      <template #data> UTC {{ timezoneWithColon }} </template>
+    </ResponseBoxData>
+    <ResponseBoxData>
+      <template #header>Isp</template>
+      <template #data> {{ responseData?.isp }} </template>
+    </ResponseBoxData>
   </div>
 </template>
 

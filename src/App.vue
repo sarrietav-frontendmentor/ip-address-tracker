@@ -27,11 +27,23 @@
     </header>
     <div class="w-full px-5 lg:px-40">
       <div class="relative flex justify-center items-center">
-        <TheResponseBox
-          class="absolute w-full shadow-2xl"
-          :is-loading="isLoading"
-          :response-data="responseData"
-        />
+        <div
+          class="
+            bg-white
+            flex flex-col
+            justify-center
+            space-y-5
+            py-5
+            rounded-xl
+            z-10
+          "
+        >
+          <TheResponseBox
+            class="absolute w-full shadow-2xl"
+            :is-loading="isLoading"
+            :response-data="responseData"
+          />
+        </div>
       </div>
     </div>
     <div class="w-full h-full relative">
