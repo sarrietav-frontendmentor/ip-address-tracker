@@ -27,23 +27,13 @@
     </header>
     <div class="w-full px-5 lg:px-40">
       <div class="relative flex justify-center items-center">
-        <div
-          class="
-            bg-white
-            flex flex-col
-            justify-center
-            space-y-5
-            py-5
-            rounded-xl
-            z-10
-          "
-        >
+        <TheCard>
           <TheResponseBox
             class="absolute w-full shadow-2xl"
             :is-loading="isLoading"
             :response-data="responseData"
           />
-        </div>
+        </TheCard>
       </div>
     </div>
     <div class="w-full h-full relative">
@@ -63,6 +53,7 @@ import TheResponseBox from '@/components/TheResponseBox.vue';
 import { ApiResponse } from '@/types/types';
 
 import { useGeoApi } from '@/utils/useGeoApi';
+import TheCard from './components/TheCard.vue';
 
 const map = ref<Map>();
 const ipAddress = ref<string>();
