@@ -57,6 +57,7 @@ const map = ref<Map>();
 const ipAddress = ref<string>();
 const responseData = ref<ApiResponse>();
 const isLoading = ref<boolean>();
+const isError = ref<boolean>(false);
 
 onMounted(handleGeoApi);
 
@@ -67,15 +68,19 @@ const handleIpInputSubmit = async () => {
 async function handleGeoApi(leafletMapInstance?: Map) {
   isLoading.value = true;
 
-  const { leafletMap, response } = await useGeoApi(
-    ipAddress.value,
-    leafletMapInstance
-  );
+  try {
+    const { leafletMap, response } = await useGeoApi(
+      ipAddress.value,
+      leafletMapInstance
+    );
 
-  ipAddress.value = response.ip;
-  responseData.value = response;
-  map.value = leafletMap;
-
-  isLoading.value = false;
+    ipAddress.value = response.ip;
+    responseData.value = response;
+    map.value = leafletMap;
+  } catch (e) {
+    isError.value = true;
+  } finally {
+    isLoading.value = false;
+  }
 }
 </script>
