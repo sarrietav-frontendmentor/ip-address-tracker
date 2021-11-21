@@ -27,11 +27,11 @@
     </header>
     <div class="w-full px-5 lg:px-40">
       <div class="relative flex justify-center items-center">
-        <TheResponseBox
-          class="absolute w-full shadow-2xl"
-          :is-loading="isLoading"
-          :response-data="responseData"
-        />
+        <TheCard class="absolute w-full shadow-2xl">
+          <TheSpinner v-if="isLoading" />
+          <TheAdBlockerWarning v-else-if="isError" />
+          <TheResponseBox v-else :response-data="responseData" />
+        </TheCard>
       </div>
     </div>
     <div class="w-full h-full relative">
@@ -51,11 +51,15 @@ import TheResponseBox from '@/components/TheResponseBox.vue';
 import { ApiResponse } from '@/types/types';
 
 import { useGeoApi } from '@/utils/useGeoApi';
+import TheCard from './components/TheCard.vue';
+import TheSpinner from './components/TheSpinner.vue';
+import TheAdBlockerWarning from './components/TheAdBlockerWarning.vue';
 
 const map = ref<Map>();
 const ipAddress = ref<string>();
 const responseData = ref<ApiResponse>();
 const isLoading = ref<boolean>();
+const isError = ref<boolean>(false);
 
 onMounted(handleGeoApi);
 
@@ -66,15 +70,19 @@ const handleIpInputSubmit = async () => {
 async function handleGeoApi(leafletMapInstance?: Map) {
   isLoading.value = true;
 
-  const { leafletMap, response } = await useGeoApi(
-    ipAddress.value,
-    leafletMapInstance
-  );
+  try {
+    const { leafletMap, response } = await useGeoApi(
+      ipAddress.value,
+      leafletMapInstance
+    );
 
-  ipAddress.value = response.ip;
-  responseData.value = response;
-  map.value = leafletMap;
-
-  isLoading.value = false;
+    ipAddress.value = response.ip;
+    responseData.value = response;
+    map.value = leafletMap;
+  } catch (e) {
+    isError.value = true;
+  } finally {
+    isLoading.value = false;
+  }
 }
 </script>
