@@ -59,7 +59,7 @@ const map = ref<Map>();
 const ipAddress = ref<string>();
 const responseData = ref<ApiResponse>();
 const isLoading = ref<boolean>();
-const isError = ref<boolean>(true);
+const isError = ref<boolean>(false);
 
 onMounted(handleGeoApi);
 
