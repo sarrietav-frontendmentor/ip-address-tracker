@@ -42,7 +42,9 @@
 
 <script lang="ts" setup>
 import { Map } from 'leaflet';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, reactive } from 'vue';
+import { required } from '@vuelidate/validators';
+import { useVuelidate } from '@vuelidate/core';
 import 'leaflet/dist/leaflet.css';
 
 import TheSearchBar from '@/components/TheSearchBar.vue';
@@ -60,6 +62,19 @@ const ipAddress = ref<string>();
 const responseData = ref<ApiResponse>();
 const isLoading = ref<boolean>();
 const isError = ref<boolean>(false);
+
+const state = reactive({ ipInput: '' });
+
+const rules = {
+  ipInput: {
+    required,
+    checkIp(ip: string) {
+      return /\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b/.test(ip);
+    },
+  },
+};
+
+const $v = useVuelidate(rules, state);
 
 onMounted(handleGeoApi);
 
