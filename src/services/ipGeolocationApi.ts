@@ -2,14 +2,14 @@ import { ApiResponse } from '@/types/types';
 import axios from 'axios';
 
 interface IpapiResponse {
-  ip: '8.8.8.8';
-  city: 'Mountain View';
-  region_code: 'CA';
-  postal: '94035';
-  latitude: 37.386;
-  longitude: -122.0838;
-  utc_offset: '-0800';
-  org: 'Google LLC';
+  ip: string;
+  city: string;
+  region_code: string;
+  postal: string;
+  latitude: number;
+  longitude: number;
+  utc_offset: string;
+  org: string;
 }
 
 export const callGeolocationApi = async (
